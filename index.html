@@ -15,6 +15,7 @@
       --accent-2:#22c55e;    /* green-500 */
       --chip:#1f2937;        /* gray-800 */
       --link:#a5b4fc;        /* indigo-300 */
+      --cyan:#22d3ee;        /* requested cyan tone */
     }
     html{scroll-behavior:smooth}
     body{margin:0;background:linear-gradient(180deg,#0b1225 0%, #0f172a 100%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -196,8 +197,109 @@
     <p class="footer">© <span id="year"></span> Cao Vu BUI • Built with clean HTML & CSS</p>
   </main>
 
+  <!-- Visitor by-country counter (cyan tone #22d3ee) -->
+  <div id="visitor-by-country" style="max-width:1100px;margin:0 auto 20px;padding:12px 16px;border-radius:12px;border:1px solid rgba(148,163,184,.18);background:#111827;">
+    <div style="text-align:center; font-weight:700; margin-bottom:10px; color:var(--cyan);">
+      🌍 Visitors by Country
+    </div>
+    <div id="visitor-summary" style="text-align:center; color:#94a3b8; margin-bottom:8px;">
+      Counting unique hits per load using a public key-value store (approximate).
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(148,163,184,.18);">
+            <th style="text-align:left;padding:8px;color:#cbd5e1;">Country</th>
+            <th style="text-align:right;padding:8px;color:#cbd5e1;">Visits</th>
+          </tr>
+        </thead>
+        <tbody id="country-rows"></tbody>
+        <tfoot>
+          <tr style="border-top:1px solid rgba(148,163,184,.18);">
+            <td style="text-align:left;padding:8px;color:#cbd5e1;">Total</td>
+            <td id="total-visits" style="text-align:right;padding:8px;color:var(--cyan);font-weight:700;">–</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const USERNAME = "buicaovu";
+      const NAMESPACE = USERNAME + ".github.io";
+      const COUNTRIES = {
+        VN: "Viet Nam", US: "United States", FR: "France", AU: "Australia",
+        GB: "United Kingdom", DE: "Germany", JP: "Japan", KR: "Korea",
+        SG: "Singapore", TH: "Thailand", IN: "India", CA: "Canada"
+      };
+
+      const rowsEl = document.getElementById("country-rows");
+      const totalEl = document.getElementById("total-visits");
+      const summaryEl = document.getElementById("visitor-summary");
+
+      function fetchWithTimeout(url, opts = {}, ms = 8000) {
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), ms);
+        return fetch(url, { ...opts, signal: controller.signal }).finally(() => clearTimeout(id));
+      }
+
+      function detectCountry() {
+        return fetchWithTimeout("https://ipapi.co/country/")
+          .then(r => r.ok ? r.text() : Promise.reject(new Error("country fetch error")))
+          .then(code => (code || "").trim().toUpperCase())
+          .catch(() => "UN");
+      }
+
+      function hitCount(key){
+        const url = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(key)}`;
+        return fetchWithTimeout(url).then(r => r.json());
+      }
+      function getCount(key){
+        const url = `https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(key)}`;
+        return fetchWithTimeout(url).then(r => r.json());
+      }
+
+      function renderRow(countryCode, name, value){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="padding:8px;color:#cbd5e1;">${name} <span style="color:#94a3b8;">(${countryCode})</span></td>
+          <td style="padding:8px;text-align:right;color:var(--cyan);font-weight:600;">${value}</td>
+        `;
+        rowsEl.appendChild(tr);
+      }
+
+      (async function main(){
+        try {
+          const code = await detectCountry();
+          await hitCount(`country_${code}`);
+          const total = await hitCount("total_visits");
+          totalEl.textContent = total.value?.toLocaleString?.() || total.value || "—";
+
+          rowsEl.innerHTML = "";
+          const codesToShow = Object.keys(COUNTRIES);
+          if (!codesToShow.includes(code)) {
+            COUNTRIES[code] = "Unknown / Other";
+          }
+
+          const entries = Object.keys(COUNTRIES).map(async c => {
+            try {
+              const res = await getCount(`country_${c}`);
+              const val = typeof res.value === "number" ? res.value : 0;
+              renderRow(c, COUNTRIES[c], (val).toLocaleString());
+            } catch {
+              renderRow(c, COUNTRIES[c], "0");
+            }
+          });
+          await Promise.all(entries);
+          summaryEl.textContent = "Counts are approximate (client-side + public KV).";
+        } catch (e) {
+          summaryEl.textContent = "Visitor counter unavailable right now.";
+        }
+      })();
+    })();
   </script>
 </body>
 </html>
