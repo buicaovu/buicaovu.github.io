@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cao Vu BUI — Lecturer & Researcher</title>
+  <meta name="description" content="Personal website of Dr. Cao Vu BUI — Lecturer & Researcher in AI, Computer Vision, and Remote Sensing at FPT University, Da Nang." />
+  <style>
+    :root{
+      --bg:#0f172a;          /* slate-900 */
+      --card:#111827;        /* gray-900 */
+      --muted:#94a3b8;       /* slate-400 */
+      --text:#e5e7eb;        /* gray-200 */
+      --accent:#38bdf8;      /* sky-400 */
+      --accent-2:#22c55e;    /* green-500 */
+      --chip:#1f2937;        /* gray-800 */
+      --link:#a5b4fc;        /* indigo-300 */
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#0b1225 0%, #0f172a 100%);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(15,23,42,.7);backdrop-filter:saturate(140%) blur(10px);z-index:30;border-bottom:1px solid rgba(148,163,184,.12)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+    .menu{display:flex;flex-wrap:wrap;gap:14px}
+    .menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px}
+    .menu a:hover{color:var(--text);background:#0b1225}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
+    .card{background:var(--card);border:1px solid rgba(148,163,184,.12);border-radius:18px;padding:22px}
+    h1{font-size:40px;line-height:1.15;margin:0 0 12px}
+    h2{font-size:26px;margin:36px 0 10px}
+    h3{font-size:20px;margin:18px 0 6px;color:#cbd5e1}
+    p{margin:10px 0}
+    .muted{color:var(--muted)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{background:var(--chip);border:1px solid rgba(148,163,184,.14);color:#cbd5e1;padding:6px 10px;border-radius:999px;font-size:13px}
+    .cta a{display:inline-block;margin-right:10px;margin-top:10px;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid rgba(148,163,184,.18)}
+    .cta a.primary{background:var(--accent);color:#07121f;border-color:transparent}
+    .cta a.secondary{color:var(--link)}
+    .avatar{aspect-ratio:1/1;border-radius:18px;background:radial-gradient(120px 80px at 30% 20%,rgba(56,189,248,.25),transparent 60%),radial-gradient(140px 100px at 80% 80%,rgba(34,197,94,.22),transparent 50%),#0b1225;border:1px dashed rgba(148,163,184,.25);display:flex;align-items:center;justify-content:center}
+    .avatar span{font-size:14px;color:var(--muted)}
+    section{padding:10px 0}
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .list li{margin:6px 0}
+    .footer{margin:40px 0 10px;color:var(--muted);text-align:center;font-size:14px}
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand"><span class="dot"></span> <span>Cao Vu BUI</span></div>
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#philosophy">Philosophy</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <div class="hero">
+      <div class="card">
+        <h1>Lecturer & Researcher in Artificial Intelligence</h1>
+        <p class="muted">Da Nang, Vietnam — Department of Artificial Intelligence, FPT University</p>
+        <p>
+          I am <strong>Dr. Cao Vu BUI</strong>, focusing on <em>computer vision</em>, <em>machine learning</em>, and <em>remote sensing</em>. I teach and supervise projects across programming, data structures, and applied AI; my research explores 3D environment reconstruction, scene understanding, object retrieval, and multispectral image analysis for agriculture and environmental monitoring.
+        </p>
+        <div class="chips">
+          <span class="chip">Computer Vision</span>
+          <span class="chip">Remote Sensing</span>
+          <span class="chip">Applied Machine Learning</span>
+          <span class="chip">AI for Agriculture</span>
+        </div>
+        <div class="cta">
+          <a class="primary" href="#contact">Get in touch</a>
+          <a class="secondary" href="https://scholar.google.com/citations?hl=en&user=bk9rs8UAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="secondary" href="https://www.linkedin.com/in/cao-vu-bui-2b30aaa8/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="avatar">
+        <!-- Replace with a portrait later -->
+        <span>Portrait / Logo</span>
+      </div>
+    </div>
+
+    <section id="about" class="grid">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>I have been a <strong>Lecturer and Researcher</strong> at the <strong>Department of Artificial Intelligence, FPT University</strong> (Da Nang, Vietnam) since 2023. I received my <strong>Ph.D. in Engineering Science</strong> from <em>Université de Technologie de Troyes</em>, France (2018), under a <strong>CIFRE</strong> industrial research training agreement with <em>LevelS3D</em>, Technopole de l'Aube, and the <em>GAMMA3</em> research team at UTT–INRIA. Earlier, I earned an <strong>Engineer’s Degree in Product Engineering</strong> from <em>Grenoble INP – Génie Industriel</em> (2013) via the <em>PFIEV</em> program in collaboration with Grenoble INP.</p>
+        <p>My work bridges academic research and real-world impact in agriculture, urban monitoring, and environmental sustainability.</p>
+      </div>
+    </section>
+
+    <section id="teaching" class="grid">
+      <div class="card">
+        <h2>Teaching & Courses</h2>
+        <h3>FPT University (Da Nang)</h3>
+        <ul class="list">
+          <li><strong>Core foundations:</strong> Programming Fundamentals with Python; Data Structures & Algorithms (C, Python, Java).</li>
+          <li><strong>Advanced AI:</strong> Computer Vision; AI Development with TensorFlow; AI & Data Science with Python and SQL.</li>
+          <li><strong>Interdisciplinary:</strong> Ethics in IT.</li>
+          <li><strong>Capstone supervision:</strong> AI and Software Engineering capstone projects (dataset preparation → deployment).</li>
+        </ul>
+        <h3>Swinburne University of Technology (Vietnam campus)</h3>
+        <ul class="list">
+          <li><em>COS30082 Applied Machine Learning</em> — ML lifecycle from design to deployment.</li>
+          <li><em>COS30008 Data Structures & Patterns</em> — advanced data structures and software design patterns in C++17.</li>
+          <li><em>COS10025 Technology in an Indigenous Context Project</em> — team projects integrating STEM with Indigenous knowledge.</li>
+        </ul>
+        <h3>FPT School of Business (Graduate Program)</h3>
+        <ul class="list">
+          <li><em>TEM501 Data Mining</em> (Master of Software Engineering) — applied analytics & industry case studies.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="philosophy" class="grid">
+      <div class="card">
+        <h2>Teaching Philosophy</h2>
+        <p>I strive to blend <strong>theory</strong> and <strong>practice</strong> through hands-on coding, authentic datasets, and project-based learning. Students progress from fundamentals to deployment-ready AI systems while developing ethical awareness and interdisciplinary thinking.</p>
+        <ul class="list">
+          <li><strong>Hands-on learning:</strong> labs, coding exercises, real datasets.</li>
+          <li><strong>Application-focused:</strong> end-to-end ML/AI pipelines (data → training → evaluation → deployment).</li>
+          <li><strong>Ethics & society:</strong> responsible AI within cultural and community contexts.</li>
+          <li><strong>Mentorship:</strong> capstones and research guidance aligned with career goals.</li>
+        </ul>
+        <p class="muted">Goal: empower students to innovate responsibly and apply AI to real-world challenges.</p>
+      </div>
+    </section>
+
+    <section id="research" class="grid cols-2">
+      <div class="card">
+        <h2>Research Focus</h2>
+        <ul class="list">
+          <li><strong>Computer Vision:</strong> 3D environment reconstruction, scene understanding, content‑based object retrieval.</li>
+          <li><strong>Remote Sensing & Agri‑AI:</strong> multispectral satellite image classification, AI‑driven crop mapping, environmental monitoring.</li>
+          <li><strong>Applied AI:</strong> practical ML for agriculture, healthcare, and smart cities.</li>
+          <li><strong>Quantum ML (exploratory):</strong> quantum kernels and post‑variational quantum models for image analysis.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Selected Applications</h2>
+        <ul class="list">
+          <li>Provincial‑level coffee yield prediction and crop mapping (Kon Tum, Vietnam).</li>
+          <li>Plant disease detection using multi/hyperspectral imagery.</li>
+          <li>Urban monitoring and environmental sustainability with vision‑language models.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="publications" class="grid">
+      <div class="card">
+        <h2>Publications (selected)</h2>
+        <ul class="list">
+          <li>Optimized Multispectral Satellite Image Compression Using Wavelet Transforms and Machine Learning Classification (ICAMCS 2024).</li>
+          <li>Residual‑Tail Boosting for Efficient Sentinel‑2 Crop Classification (2024).</li>
+          <li>Quantum Kernels in Support Vector Classification for Improved Performance (2024).</li>
+          <li>Learning Coarse‑to‑Fine: Progressive Resolution Training Strategies for Satellite Images (2023).</li>
+        </ul>
+        <p class="muted">Full list on <a href="https://scholar.google.com/citations?hl=en&user=bk9rs8UAAAAJ" target="_blank" rel="noopener" style="color:var(--link)">Google Scholar</a>.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="grid">
+      <div class="card">
+        <h2>Projects</h2>
+        <ul class="list">
+          <li><strong>Smart Agriculture 4.0 (Kon Tum):</strong> end‑to‑end pipeline combining Sentinel‑2 preprocessing, feature engineering (NDVI/EVI/LST), and ML for coffee yield prediction.</li>
+          <li><strong>RemoteCLIP for Sustainable Urban Development:</strong> vision‑language models for air‑quality monitoring and urban analytics.</li>
+          <li><strong>Quantum‑enhanced Image Analysis:</strong> exploratory research on post‑variational quantum neural networks and quantum kernels.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="grid">
+      <div class="card">
+        <h2>Contact</h2>
+        <p><strong>Email:</strong> <a href="mailto:vubc@fe.edu.vn" style="color:var(--link)">vubc@fe.edu.vn</a> &nbsp;|&nbsp; <a href="mailto:vcbui@swin.edu.vn" style="color:var(--link)">vcbui@swin.edu.vn</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cao-vu-bui-2b30aaa8/" target="_blank" rel="noopener" style="color:var(--link)">linkedin.com/in/cao-vu-bui-2b30aaa8</a></p>
+        <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com/citations?hl=en&user=bk9rs8UAAAAJ" target="_blank" rel="noopener" style="color:var(--link)">scholar.google.com</a></p>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="year"></span> Cao Vu BUI • Built with clean HTML & CSS</p>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
